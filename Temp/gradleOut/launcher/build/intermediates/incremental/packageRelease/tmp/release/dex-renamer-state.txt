@@ -1,0 +1,4 @@
+#Thu Sep 16 14:37:05 EDT 2021
+base.0=/Users/zbodnick/OneDrive - The George Washington University/Senior Year/ALTERNATE AND VIRTUAL REALITY/WildwayVR/Temp/gradleOut/launcher/build/intermediates/transforms/dexMerger/release/0
+path.0=classes.dex
+renamed.0=classes.dex
