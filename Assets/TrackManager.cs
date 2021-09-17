@@ -56,7 +56,7 @@ public class TrackManager : MonoBehaviour
     }
 
     private int RandomTrack() {
-        return Random.Range(0, 1);
+        return Random.Range(0, numTracks);
     }
 
     public void SpawnTrack(int trackIndex = 0) {

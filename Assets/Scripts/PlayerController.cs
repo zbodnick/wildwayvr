@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour {
 	void Start () {
 
 		rb = GetComponent<Rigidbody>();
-		playerTransform = GameObject.Find("Player").transform;
+		playerTransform = GameObject.Find("XR Rig").transform;
 	}
 
 	void FixedUpdate () {
