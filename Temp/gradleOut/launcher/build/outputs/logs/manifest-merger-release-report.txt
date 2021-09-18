@@ -26,7 +26,7 @@ INJECTED from /Users/zbodnick/OneDrive - The George Washington University/Senior
 	xmlns:android
 		ADDED from /Users/zbodnick/OneDrive - The George Washington University/Senior Year/ALTERNATE AND VIRTUAL REALITY/WildwayVR/Temp/gradleOut/launcher/src/main/AndroidManifest.xml:3:11-69
 	android:installLocation
-		ADDED from /Users/zbodnick/OneDrive - The George Washington University/Senior Year/ALTERNATE AND VIRTUAL REALITY/WildwayVR/Temp/gradleOut/launcher/src/main/AndroidManifest.xml:3:149-189
+		ADDED from /Users/zbodnick/OneDrive - The George Washington University/Senior Year/ALTERNATE AND VIRTUAL REALITY/WildwayVR/Temp/gradleOut/launcher/src/main/AndroidManifest.xml:3:149-179
 supports-screens
 ADDED from /Users/zbodnick/OneDrive - The George Washington University/Senior Year/ALTERNATE AND VIRTUAL REALITY/WildwayVR/Temp/gradleOut/launcher/src/main/AndroidManifest.xml:4:3-163
 	android:largeScreens
