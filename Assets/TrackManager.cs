@@ -83,6 +83,11 @@ public class TrackManager : MonoBehaviour
         int[] validTracks = trackPairs[previousTrackTag];
         int newTrackIndex = validTracks[Random.Range(0, validTracks.Length)];
         
+        while (newTrackIndex == previousIndex) {
+            newTrackIndex = validTracks[Random.Range(0, validTracks.Length)];
+        }
+            
+        
         track = Instantiate (trackPrefabs[newTrackIndex]) as GameObject;
 
         track.transform.position = Vector3.forward * zSpawn;
