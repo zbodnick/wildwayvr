@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2655184683434552559}
   m_Layer: 0
-  m_Name: CliffToTrack
-  m_TagString: Untagged
+  m_Name: CliffToFlat
+  m_TagString: Flat
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

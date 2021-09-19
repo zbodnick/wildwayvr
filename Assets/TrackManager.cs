@@ -8,34 +8,44 @@ public class TrackManager : MonoBehaviour
 	public GameObject[] trackPrefabs;
 	public float zSpawn = 0;
 	public float trackLen = 40;
-	public int currNumTracks = 3;
-    public int numTracks = 3;
+	public int currNumTracks = 5;
+    public int numTracks = 7;
 
     public Transform playerTransform;
     private List<GameObject> activeTracks;
     private int previousIndex;
+    private string previousTrackTag = "Flat";
 
+    private Dictionary<string, int[]> trackPairs;
 
     // Start is called before the first frame update
     void Start()
     {
 
         activeTracks = new List<GameObject>();
-        SpawnTrack();
+        GenerateTrackPairs();
 
     	// Generate first few tracks
     	for (int i = 0; i < currNumTracks; i++) {
-
-    		if (i == 0) {
-    			SpawnTrack();
-    		} else {
-    			SpawnTrack(RandomTrack());
-    		}
-
+    		SpawnTrack();
     	}
 
         playerTransform = playerTransform.transform;
         
+    }
+
+    private void GenerateTrackPairs() {
+
+        int[] startWithFlat = new int[] {0, 1, 2};
+        int[] startWithHill = new int[] {3, 4};
+        int[] startWithCliff = new int[] {5, 6};
+
+        trackPairs = new Dictionary<string, int[]>();
+
+        trackPairs.Add("Flat", startWithFlat);
+        trackPairs.Add("Hill", startWithHill);
+        trackPairs.Add("Cliff", startWithCliff);
+
     }
 
     // Update is called once per frame
@@ -43,14 +53,9 @@ public class TrackManager : MonoBehaviour
     {
 
     	// If player is at end of track, spawn a new one
-    	if (playerTransform.position.z >= zSpawn - (currNumTracks * trackLen)) {
-            int index = RandomTrack();
-            // while(index == previousIndex) {
-            //     index = RandomTrack();
-            // }
-
-            PopTrack();
-            SpawnTrack(index);
+    	if (playerTransform.position.z - (3*trackLen) >= zSpawn - (currNumTracks * trackLen)) {
+            PopTrack(); 
+            SpawnTrack();
     	}
 
     }
@@ -59,18 +64,36 @@ public class TrackManager : MonoBehaviour
         return Random.Range(0, numTracks);
     }
 
-    public void SpawnTrack(int trackIndex = 0) {
+    // GenerateTrackPairs determine what track can be generated considering previousIndex and the following matching scheme:
+    
+    // BridgeTrack - needs FlatToHill or FlatToCliff
+    // CliffToFlat - needs FlatToHill or FlatToCliff
+    // HillToFlat - needs FlatToHill or FlatToCliff
 
-    	GameObject track;
-        track = Instantiate (trackPrefabs[trackIndex]) as GameObject;
+    // CliffToHill - needs HillToCliff or HillToFlat
+    // FlatToHill - needs HillToCliff or HillToFlat
+
+    // HillToCliff - needs CliffToHill or CliffToFlat
+    // FlatToCliff - needs CliffToHill or CliffToFlat
+
+    public void SpawnTrack() {
+
+        GameObject track;
+
+        int[] validTracks = trackPairs[previousTrackTag];
+        int newTrackIndex = validTracks[Random.Range(0, validTracks.Length)];
+        
+        track = Instantiate (trackPrefabs[newTrackIndex]) as GameObject;
 
         track.transform.position = Vector3.forward * zSpawn;
         track.transform.rotation = Quaternion.identity;
+
+        previousTrackTag = track.tag;
         track.SetActive(true);
 
         activeTracks.Add(track);
     	zSpawn += trackLen;
-        previousIndex = trackIndex;
+        previousIndex = newTrackIndex;
 
     }
 
