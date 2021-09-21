@@ -6,8 +6,6 @@ using TMPro;
 public class PlayerController : MonoBehaviour {
 
 	public float speed;
-    private float movementX;
-    private float movementY;
     private Transform playerTransform;
 
 	private Rigidbody rb;

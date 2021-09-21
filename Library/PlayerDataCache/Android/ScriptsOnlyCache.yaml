@@ -1,6 +1,8 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - CarController
+    - Gun
     - HandController
     - PlayerController
     - TrackManager
@@ -65,10 +67,8 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -132,6 +132,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 95
       Script: {instanceID: 0}
+    - Class: 96
+      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 108
@@ -157,89 +159,93 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12302}
     - Class: 114
-      Script: {instanceID: 12480}
+      Script: {instanceID: 12386}
     - Class: 114
-      Script: {instanceID: 12528}
+      Script: {instanceID: 12482}
     - Class: 114
-      Script: {instanceID: 12934}
+      Script: {instanceID: 12530}
     - Class: 114
-      Script: {instanceID: 12984}
+      Script: {instanceID: 12936}
     - Class: 114
-      Script: {instanceID: 13026}
+      Script: {instanceID: 12986}
     - Class: 114
-      Script: {instanceID: 13060}
+      Script: {instanceID: 13028}
     - Class: 114
-      Script: {instanceID: 13352}
+      Script: {instanceID: 13062}
     - Class: 114
-      Script: {instanceID: 13420}
+      Script: {instanceID: 13354}
     - Class: 114
-      Script: {instanceID: 13722}
+      Script: {instanceID: 13422}
     - Class: 114
-      Script: {instanceID: 13792}
+      Script: {instanceID: 13724}
     - Class: 114
-      Script: {instanceID: 13870}
+      Script: {instanceID: 13794}
     - Class: 114
-      Script: {instanceID: 14028}
+      Script: {instanceID: 13872}
     - Class: 114
-      Script: {instanceID: 14166}
+      Script: {instanceID: 14030}
     - Class: 114
-      Script: {instanceID: 14450}
+      Script: {instanceID: 14168}
     - Class: 114
-      Script: {instanceID: 14486}
+      Script: {instanceID: 14284}
     - Class: 114
-      Script: {instanceID: 14618}
+      Script: {instanceID: 14456}
     - Class: 114
-      Script: {instanceID: 14632}
+      Script: {instanceID: 14492}
     - Class: 114
-      Script: {instanceID: 14708}
+      Script: {instanceID: 14624}
     - Class: 114
-      Script: {instanceID: 14916}
+      Script: {instanceID: 14638}
     - Class: 114
-      Script: {instanceID: 15006}
+      Script: {instanceID: 14714}
     - Class: 114
-      Script: {instanceID: 15010}
+      Script: {instanceID: 14910}
     - Class: 114
-      Script: {instanceID: 15030}
+      Script: {instanceID: 14922}
     - Class: 114
-      Script: {instanceID: 15040}
+      Script: {instanceID: 15012}
     - Class: 114
-      Script: {instanceID: 15156}
+      Script: {instanceID: 15016}
     - Class: 114
-      Script: {instanceID: 15200}
+      Script: {instanceID: 15036}
     - Class: 114
-      Script: {instanceID: 15238}
+      Script: {instanceID: 15046}
     - Class: 114
-      Script: {instanceID: 15250}
+      Script: {instanceID: 15162}
     - Class: 114
-      Script: {instanceID: 15338}
+      Script: {instanceID: 15206}
     - Class: 114
-      Script: {instanceID: 15682}
+      Script: {instanceID: 15244}
     - Class: 114
-      Script: {instanceID: 15768}
+      Script: {instanceID: 15256}
     - Class: 114
-      Script: {instanceID: 15842}
+      Script: {instanceID: 15344}
     - Class: 114
-      Script: {instanceID: 15890}
+      Script: {instanceID: 15688}
     - Class: 114
-      Script: {instanceID: 16080}
+      Script: {instanceID: 15774}
     - Class: 114
-      Script: {instanceID: 16150}
+      Script: {instanceID: 15848}
     - Class: 114
-      Script: {instanceID: 16334}
+      Script: {instanceID: 15896}
     - Class: 114
-      Script: {instanceID: 16396}
+      Script: {instanceID: 16086}
     - Class: 114
-      Script: {instanceID: 16670}
+      Script: {instanceID: 16156}
     - Class: 114
-      Script: {instanceID: 16674}
+      Script: {instanceID: 16340}
     - Class: 114
-      Script: {instanceID: 16752}
+      Script: {instanceID: 16402}
     - Class: 114
-      Script: {instanceID: 16912}
+      Script: {instanceID: 16676}
     - Class: 114
-      Script: {instanceID: 16920}
+      Script: {instanceID: 16680}
     - Class: 114
-      Script: {instanceID: 51090}
+      Script: {instanceID: 16758}
+    - Class: 114
+      Script: {instanceID: 16918}
+    - Class: 114
+      Script: {instanceID: 16926}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -493,6 +499,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.XR.Interaction.Toolkit.dll
     namespaceName: UnityEngine.XR.Interaction.Toolkit
     className: LocomotionSystem
+  - hash:
+      serializedVersion: 2
+      Hash: bab4bbe04c9d46662ecbaa09266b08f3
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: HandController
   - hash:
       serializedVersion: 2
       Hash: 7ab0e790220bdca831fdd886b339039d
@@ -867,10 +879,22 @@ ScriptsOnlyBuild:
     className: RemoteTestResultSender
   - hash:
       serializedVersion: 2
+      Hash: 2026c86d3cc65c93692152504efb25c2
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Gun
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Unity.InputSystem.dll
     namespaceName: UnityEngine.InputSystem.UI
     className: BaseInputOverride
+  - hash:
+      serializedVersion: 2
+      Hash: bab4bbe04c9d46662ecbaa09266b08f3
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: HandController
   - hash:
       serializedVersion: 2
       Hash: c1f5356fcd27668ddc25078e27f9828d
@@ -1519,18 +1543,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: bab4bbe04c9d46662ecbaa09266b08f3
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: HandController
-  - hash:
-      serializedVersion: 2
-      Hash: bab4bbe04c9d46662ecbaa09266b08f3
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: HandController
   platform: 13
   scenePathNames:
   - Assets/Scenes/GameScene.unity
