@@ -94,8 +94,5 @@ public class HandAnimator : MonoBehaviour
         m_animator.SetLayerWeight(m_animLayerIndexThumb, 1f-thumbCap_state);
       }
 
-
-
-
     }
 }
