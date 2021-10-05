@@ -91,6 +91,12 @@ public class EnemyController : MonoBehaviour {
         alreadyAttacked = false;
     }
 
+    private void OnCollisionEnter(Collision collision) {
+        if (collision.collider.gameObject.tag == "Bullet") {
+            TakeDamage(50);
+        }
+    }
+
     public void TakeDamage(int damage) {
         health -= damage;
 
