@@ -7,24 +7,24 @@ public class EnemyController : MonoBehaviour {
     private Transform player;
     public LayerMask whatIsGround, whatIsPlayer;
     public float health;
-
-    //Patroling
+ 
+    // Patroling
     public Vector3 walkPoint;
     public float walkPointRange;
     bool walkPointSet;
 
-    //Attacking
+    // Attacking
     public float timeBetweenAttacks;
     public GameObject projectile;
     bool alreadyAttacked;
 
-    //States
+    // States
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
 
     private void Awake() {
-        // player = GameObject.Find("XR Rig").transform;
-        enemy = GetComponent<NavMeshAgent>();// GetComponent<Agent>();
+
+        enemy = GetComponent<NavMeshAgent>();
         player = GameObject.Find("XR Rig").transform;
 
     }
@@ -71,7 +71,7 @@ public class EnemyController : MonoBehaviour {
 
     private void AttackPlayer() {
         //Make sure enemy doesn't move
-        enemy.SetDestination(player.position);
+        enemy.SetDestination(transform.position);
 
         transform.LookAt(player);
 
@@ -80,7 +80,7 @@ public class EnemyController : MonoBehaviour {
             // Attack code here
             Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
             rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-            rb.AddForce(transform.up * 4f, ForceMode.Impulse);
+            rb.AddForce(transform.up * 5f, ForceMode.Impulse);
 
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
@@ -92,8 +92,8 @@ public class EnemyController : MonoBehaviour {
     }
 
     private void OnCollisionEnter(Collision collision) {
-        if (collision.collider.gameObject.tag == "Bullet") {
-            TakeDamage(50);
+        if (collision.collider.gameObject.tag == "PlayerBullet") {
+            TakeDamage(100);
         }
     }
 

@@ -8,6 +8,7 @@ TagManager:
   - Hill
   - Cliff
   - Bullet
+  - PlayerBullet
   layers:
   - Default
   - TransparentFX

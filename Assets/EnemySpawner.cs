@@ -58,15 +58,15 @@ public class EnemySpawner : MonoBehaviour {
     private void SpawnRoundRobinEnemy(int SpawnedEnemies) {
         int SpawnIndex = SpawnedEnemies % EnemyPrefabs.Count;
 
-        DoSpawnEnemy(SpawnIndex);
+        SpawnEnemy(SpawnIndex);
     }
 
     private void SpawnRandomEnemy() {
-        DoSpawnEnemy(Random.Range(0, EnemyPrefabs.Count));
+        SpawnEnemy(Random.Range(0, EnemyPrefabs.Count));
     }
 
     // Spawns random enemy
-    private void DoSpawnEnemy(int SpawnIndex) {
+    private void SpawnEnemy(int SpawnIndex) {
         PoolableObject poolableObject = EnemyObjectPools[SpawnIndex].GetObject();
 
         if (poolableObject != null) {
@@ -81,10 +81,10 @@ public class EnemySpawner : MonoBehaviour {
                 enemy.Agent.enabled = true;
                 enemy.Controller.ChasePlayer();
             } else {
-                Debug.LogError($"Unable to place NavMeshAgent on NavMesh. Tried to use {Triangulation.vertices[VertexIndex]}");
+                Debug.LogError($"Unable to place Agent on NavMesh. Tried to use {Triangulation.vertices[VertexIndex]}");
             }
         } else {
-            Debug.LogError($"Unable to fetch enemy of type {SpawnIndex} from object pool. Out of objects?");
+            Debug.LogError($"Unable to get enemy of type {SpawnIndex} from object pool.");
         }
     }
 
@@ -92,6 +92,6 @@ public class EnemySpawner : MonoBehaviour {
     public enum SpawnMethod {
         RoundRobin,
         Random
-        // Other spawn methods can be added here
+        // Add more spawn methods
     }
 }

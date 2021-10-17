@@ -10,8 +10,6 @@ public class TrackManager : MonoBehaviour {
 	public int currNumTracks = 5;
     public int numTracks = 7;
 
-    public GameObject spawner;
-
     public Transform playerTransform;
     private List<GameObject> activeTracks;
     private int previousIndex;
@@ -92,8 +90,6 @@ public class TrackManager : MonoBehaviour {
 
         previousTrackTag = track.tag;
         track.SetActive(true);
-
-        Instantiate(spawner, track.transform.position + track.transform.forward * 5, track.transform.rotation);
 
         activeTracks.Add(track);
     	zSpawn += trackLen;
