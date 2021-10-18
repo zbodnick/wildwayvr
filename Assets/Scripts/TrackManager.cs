@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class TrackManager : MonoBehaviour {
 
-	public GameObject[] trackPrefabs;
-	public float zSpawn = 0;
-	public float trackLen = 40;
-	public int currNumTracks = 5;
+    public GameObject[] trackPrefabs;
+    public float zSpawn = 0;
+    public float trackLen = 40;
+    public int currNumTracks = 5;
     public int numTracks = 7;
 
     public Transform playerTransform;
@@ -22,10 +22,10 @@ public class TrackManager : MonoBehaviour {
         activeTracks = new List<GameObject>();
         GenerateTrackPairs();
 
-    	// Generate first few tracks
-    	for (int i = 0; i < currNumTracks; i++) {
-    		SpawnTrack();
-    	}
+        // Generate first few tracks
+        for (int i = 0; i < currNumTracks; i++) {
+            SpawnTrack();
+        }
 
         playerTransform = playerTransform.transform;
         
@@ -47,14 +47,14 @@ public class TrackManager : MonoBehaviour {
 
     void Update() {
 
-    	// If player is at end of track, spawn a new one & pop a track
-    	if (playerTransform.position.z - (3*trackLen) >= zSpawn - (currNumTracks * trackLen)) {
+        // If player is at end of track, spawn a new one & pop a track
+        if (playerTransform.position.z - (3*trackLen) >= zSpawn - (currNumTracks * trackLen)) {
             PopTrack(); 
             SpawnTrack();
 
 
 
-    	}
+        }
 
     }
 
@@ -92,7 +92,7 @@ public class TrackManager : MonoBehaviour {
         track.SetActive(true);
 
         activeTracks.Add(track);
-    	zSpawn += trackLen;
+        zSpawn += trackLen;
         previousIndex = newTrackIndex;
 
     }
