@@ -25,7 +25,8 @@ public class AdvancedEnemyController : MonoBehaviour
 
     // Start is called before the first frame update
     void Start() {
-        SetupRagdoll(true);
+        SetupRagdoll(false);
+        GetComponent<Animator>().enabled = false;
     }
 
     Vector3 GetTarget() {
@@ -62,9 +63,14 @@ public class AdvancedEnemyController : MonoBehaviour
     }
 
     void Dead(Vector3 hitpoint) {
+
+        // var enemyRenderer = GetComponent<Renderer>();
+
+       //Call SetColor using the shader property name "_Color" and setting the color to red
+       // enemyRenderer.material.SetColor("_Color", Color.red);
+
         GetComponent<Animator>().enabled = false;
         SetupRagdoll(false);
-        Debug.Log("Hit");
         foreach (var item in Physics.OverlapSphere(hitpoint,0.5f)) {
             Rigidbody rb = item.GetComponent<Rigidbody>();
             if (rb) {
