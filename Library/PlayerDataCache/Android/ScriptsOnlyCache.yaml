@@ -15,6 +15,7 @@ ScriptsOnlyBuild:
     - PlayerShoot
     - TrackManager
     - TrackManager2
+    - bulletCollision
     Unity.InputSystem.dll:
     - UnityEngine.InputSystem.InputSettings
     - UnityEngine.InputSystem.InputSystemObject
@@ -311,6 +312,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 16962}
     - Class: 114
       Script: {instanceID: 191130}
+    - Class: 114
+      Script: {instanceID: 519342}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -684,7 +687,7 @@ ScriptsOnlyBuild:
     className: CameraSwitcher
   - hash:
       serializedVersion: 2
-      Hash: 255e5c13c9a717791aa29d0ed2ea54c4
+      Hash: 92915f47b9f5fff9a7a4c6176f5f5b91
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GunNew
@@ -906,7 +909,7 @@ ScriptsOnlyBuild:
     className: DebugUIHandlerGroup
   - hash:
       serializedVersion: 2
-      Hash: c69e65f776fd4e8d9493ba4b7e9797e0
+      Hash: c55c04e74f4bfd6879d68ff5af49e99d
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: AdvancedEnemyController
@@ -1692,10 +1695,16 @@ ScriptsOnlyBuild:
     className: PlayableTrack
   - hash:
       serializedVersion: 2
-      Hash: 255e5c13c9a717791aa29d0ed2ea54c4
+      Hash: 11ecdbf703d14da87ad7d55b42bdaddf
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerShoot
+  - hash:
+      serializedVersion: 2
+      Hash: 370d864f64296068761a3843d8ac227f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: bulletCollision
   platform: 13
   scenePathNames:
   - Assets/Scenes/GameScene.unity

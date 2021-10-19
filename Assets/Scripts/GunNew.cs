@@ -7,10 +7,6 @@ public class GunNew : MonoBehaviour
     public int maxammo = 1;
     private int currentammo;
 
-    // public TextMeshPro text;
-    public TMPro.TextMeshProUGUI text;
-    // public TMPro.TextMeshProUGUI reloadMessage;
-    public GameObject line;
     public GameObject bulletPrefab;
     public GameObject casingPrefab;
     public GameObject muzzleFlashPrefab;
@@ -24,16 +20,14 @@ public class GunNew : MonoBehaviour
 
     public float shotPower = 100f;
 
-    void Start()
-    {
+    void Start() {
         if (barrelLocation == null)
             barrelLocation = transform;
 
         Reload();
     }
 
-    void Reload()
-    {
+    void Reload() {
         currentammo = maxammo;
         source.PlayOneShot(reload);
     }
@@ -45,11 +39,9 @@ public class GunNew : MonoBehaviour
             Reload();
         }
 
-        text.text = currentammo.ToString();
     }
 
-    public void Shoot()
-    {
+    public void Shoot() {
 
         if (currentammo != 0) {
             currentammo--;
@@ -66,15 +58,7 @@ public class GunNew : MonoBehaviour
             bool hasHit = Physics.Raycast(barrelLocation.position, barrelLocation.forward, out hitInfo, 100);
 
             if (hasHit)
-                hitInfo.collider.SendMessageUpwards("Dead", hitInfo.point, SendMessageOptions.DontRequireReceiver);
-
-            if (line)
-            {
-                GameObject liner = Instantiate(line);
-                liner.GetComponent<LineRenderer>().SetPositions(new Vector3[] { barrelLocation.position , barrelLocation.position + barrelLocation.forward * 100 });
-
-                Destroy(liner, 0.5f);
-            }
+                hitInfo.collider.SendMessageUpwards("Damage", hitInfo.point, SendMessageOptions.DontRequireReceiver);
 
             Destroy(tempFlash, 0.5f);
             // Instantiate(casingPrefab, casingExitLocation.position, casingExitLocation.rotation).GetComponent<Rigidbody>().AddForce(casingExitLocation.right * 100f);

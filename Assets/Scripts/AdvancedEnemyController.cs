@@ -70,7 +70,11 @@ public class AdvancedEnemyController : MonoBehaviour
 
     public void Dead(Vector3 hitpoint) {
 
-        // Destroy(gameObject);
+
+       // //Call SetColor using the shader property name "_Color" and setting the color to red
+        gameObject.transform.FindChild("Ch36").gameObject.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
+
+
         GetComponent<Animator>().enabled = false;
         SetupRagdoll(false);
         foreach (var item in Physics.OverlapSphere(hitpoint,0.5f)) {

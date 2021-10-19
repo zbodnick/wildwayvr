@@ -71,9 +71,9 @@ public class PlayerShoot : MonoBehaviour
             source.PlayOneShot(fire);
 
             GameObject tempFlash;
-            if(bulletPrefab)
-                Instantiate(bulletPrefab, barrelLocation.position, barrelLocation.rotation).GetComponent<Rigidbody>().AddForce(barrelLocation.forward * shotPower,ForceMode.VelocityChange);
-           tempFlash = Instantiate(muzzleFlashPrefab, barrelLocation.position, barrelLocation.rotation);
+            if (bulletPrefab)
+                Instantiate(bulletPrefab, barrelLocation.position, barrelLocation.rotation).GetComponent<Rigidbody>().AddForce(barrelLocation.forward * shotPower, ForceMode.VelocityChange);
+           	tempFlash = Instantiate(muzzleFlashPrefab, barrelLocation.position, barrelLocation.rotation);
 
             RaycastHit hitInfo;
             bool hasHit = Physics.Raycast(barrelLocation.position, barrelLocation.forward, out hitInfo, 100f);
@@ -82,7 +82,7 @@ public class PlayerShoot : MonoBehaviour
             // if(hasEnemy != null) hasEnemy.Dead(hitInfo.point);
 
             if (hasHit)  {
-            	Debug.Log(hitInfo.transform.name);
+            	// Debug.Log(hitInfo.transform.name);
                 hitInfo.collider.SendMessageUpwards("Dead", hitInfo.point, SendMessageOptions.DontRequireReceiver);
             }
 
