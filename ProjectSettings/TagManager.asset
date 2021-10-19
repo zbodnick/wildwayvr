@@ -9,6 +9,8 @@ TagManager:
   - Cliff
   - Bullet
   - PlayerBullet
+  - bullet
+  - Enemy
   layers:
   - Default
   - TransparentFX

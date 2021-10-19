@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GunNew : MonoBehaviour
 {
-    public int maxammo = 10;
+    public int maxammo = 1;
     private int currentammo;
 
     // public TextMeshPro text;

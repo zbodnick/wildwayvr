@@ -12,6 +12,8 @@ public class AdvancedEnemyController : MonoBehaviour
     public LayerMask whatIsGround, whatIsPlayer;
     public float health;
 
+    public bool isDead = false;
+
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
 
@@ -25,8 +27,7 @@ public class AdvancedEnemyController : MonoBehaviour
 
     // Start is called before the first frame update
     void Start() {
-        SetupRagdoll(false);
-        GetComponent<Animator>().enabled = false;
+        SetupRagdoll(true);
     }
 
     Vector3 GetTarget() {
@@ -37,6 +38,11 @@ public class AdvancedEnemyController : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
+
+        if (isDead) {
+            Dead(transform.position);
+        }
+
 	    playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
@@ -62,13 +68,9 @@ public class AdvancedEnemyController : MonoBehaviour
         }
     }
 
-    void Dead(Vector3 hitpoint) {
+    public void Dead(Vector3 hitpoint) {
 
-        // var enemyRenderer = GetComponent<Renderer>();
-
-       //Call SetColor using the shader property name "_Color" and setting the color to red
-       // enemyRenderer.material.SetColor("_Color", Color.red);
-
+        // Destroy(gameObject);
         GetComponent<Animator>().enabled = false;
         SetupRagdoll(false);
         foreach (var item in Physics.OverlapSphere(hitpoint,0.5f)) {

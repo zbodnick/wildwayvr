@@ -20,6 +20,7 @@ public class PlayerShoot : MonoBehaviour
     public AudioClip reload;
     public AudioClip noammo; 
 
+    public bool shoot = false;
 
     public float shotPower = 100f;
 
@@ -38,6 +39,10 @@ public class PlayerShoot : MonoBehaviour
 
     void Update() {
 
+        if (shoot) {
+            Shoot();
+        }
+
         // if (currentammo > 0) {
         //     GetComponent<Animator>().SetTrigger("Fire");
         // } else  {
@@ -48,7 +53,7 @@ public class PlayerShoot : MonoBehaviour
             Reload();
         }
 
-        // text.text = currentammo.ToString();
+        text.text = currentammo.ToString();
     }
 
     public void Shoot() {
@@ -71,9 +76,13 @@ public class PlayerShoot : MonoBehaviour
            tempFlash = Instantiate(muzzleFlashPrefab, barrelLocation.position, barrelLocation.rotation);
 
             RaycastHit hitInfo;
-            bool hasHit = Physics.Raycast(barrelLocation.position, barrelLocation.forward, out hitInfo, 100);
+            bool hasHit = Physics.Raycast(barrelLocation.position, barrelLocation.forward, out hitInfo, 100f);
+
+            // AdvancedEnemyController hasEnemy = hitInfo.collider.GetComponent<AdvancedEnemyController>();
+            // if(hasEnemy != null) hasEnemy.Dead(hitInfo.point);
 
             if (hasHit)  {
+            	Debug.Log(hitInfo.transform.name);
                 hitInfo.collider.SendMessageUpwards("Dead", hitInfo.point, SendMessageOptions.DontRequireReceiver);
             }
 

@@ -25,7 +25,7 @@ public class EnemyController : MonoBehaviour {
     private void Awake() {
 
         enemy = GetComponent<NavMeshAgent>();
-        player = GameObject.Find("XR Rig").transform;
+        player = GameObject.Find("RagdollEnemy2").transform;
 
     }
 
