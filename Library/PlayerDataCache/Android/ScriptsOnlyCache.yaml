@@ -66,6 +66,7 @@ ScriptsOnlyBuild:
     Unity.XR.Interaction.Toolkit.dll:
     - UnityEngine.XR.Interaction.Toolkit.DeviceBasedSnapTurnProvider
     - UnityEngine.XR.Interaction.Toolkit.LocomotionSystem
+    - UnityEngine.XR.Interaction.Toolkit.TeleportationAnchor
     - UnityEngine.XR.Interaction.Toolkit.TeleportationArea
     - UnityEngine.XR.Interaction.Toolkit.TeleportationProvider
     - UnityEngine.XR.Interaction.Toolkit.XRController
@@ -225,9 +226,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 13890}
     - Class: 114
-      Script: {instanceID: 14048}
+      Script: {instanceID: 13990}
     - Class: 114
-      Script: {instanceID: 14126}
+      Script: {instanceID: 14048}
     - Class: 114
       Script: {instanceID: 14156}
     - Class: 114
@@ -301,8 +302,6 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 16788}
     - Class: 114
-      Script: {instanceID: 16818}
-    - Class: 114
       Script: {instanceID: 16924}
     - Class: 114
       Script: {instanceID: 16932}
@@ -312,8 +311,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 16962}
     - Class: 114
       Script: {instanceID: 191130}
-    - Class: 114
-      Script: {instanceID: 519342}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -345,8 +342,6 @@ ScriptsOnlyBuild:
     - Class: 223
       Script: {instanceID: 0}
     - Class: 224
-      Script: {instanceID: 0}
-    - Class: 238
       Script: {instanceID: 0}
   scriptHashData:
   - hash:
@@ -909,7 +904,7 @@ ScriptsOnlyBuild:
     className: DebugUIHandlerGroup
   - hash:
       serializedVersion: 2
-      Hash: 816b0323c61346dcf9228e9c028f3b1c
+      Hash: 88cdfb2acdfe59c166a959282a616ea0
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: AdvancedEnemyController
@@ -969,13 +964,13 @@ ScriptsOnlyBuild:
     className: TMP_SpriteAnimator
   - hash:
       serializedVersion: 2
-      Hash: dcdabbc230f0dedcc5f752aa61833830
+      Hash: 5bcbd10761ccd79212dd19bb651c2c12
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: EnemySpawner
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: afc5b93a7b192de2dcb3832fe35a5c7e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerController
@@ -1653,7 +1648,7 @@ ScriptsOnlyBuild:
     className: NewEnemyObject
   - hash:
       serializedVersion: 2
-      Hash: bc872385e78261acd107302db6e9c7f5
+      Hash: 17c043ee7556b12b5f6b26f32cbd9b9a
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: TrackManager2
