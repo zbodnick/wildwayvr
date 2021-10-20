@@ -10,7 +10,6 @@ public class JumpPad : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-        
     }
 
     // Update is called once per frame
@@ -21,7 +20,9 @@ public class JumpPad : MonoBehaviour {
     void OnCollisionEnter(Collision collision) {
 		
 		if (collision.gameObject.CompareTag("Player")) {
-			// Apply jump force
+			// Apply jump force		
+			// collision.gameObject.GetComponent<Rigidbody>().isKinematic = false;
+			// collision.gameObject.GetComponent<Rigidbody>().useGravity = true;
 			collision.gameObject.GetComponent<Rigidbody>().AddForce(direction, ForceMode.Impulse);
 		}
 	}

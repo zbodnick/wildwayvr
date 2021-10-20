@@ -97,7 +97,6 @@ public class AdvancedEnemyController : MonoBehaviour
 	    transform.forward = Vector3.ProjectOnPlane((Camera.main.transform.position - transform.position), Vector3.up).normalized;
     }
 
-
     void SetupRagdoll(bool value) {
         foreach (var item in GetComponentsInChildren<Rigidbody>()) {
             item.isKinematic = value;
@@ -108,7 +107,7 @@ public class AdvancedEnemyController : MonoBehaviour
 
 
        // //Call SetColor using the shader property name "_Color" and setting the color to red
-        gameObject.transform.FindChild("Ch36").gameObject.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
+        gameObject.transform.Find("Ch36").gameObject.GetComponent<Renderer>().material.SetColor("_BaseColor", Color.red);
 
 
         GetComponent<Animator>().enabled = false;

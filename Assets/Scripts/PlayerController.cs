@@ -17,14 +17,18 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void Update() {
-		// transform.position += Time.deltaTime * new Vector3(0, 0, 2);
-	}
-
-	void FixedUpdate () {
 		
-		playerTransform.Translate(0, 0, speed * Time.deltaTime, Space.Self);
-
+		Vector3 tempVect = new Vector3(0, 0, 1);
+        tempVect = tempVect.normalized * speed * Time.deltaTime;
+        rb.MovePosition(transform.position + tempVect);
+		// transform.position += Time.deltaTime * new Vector3(0, 0, speed);
 	}
+
+	// void FixedUpdate () {
+		
+	// 	playerTransform.Translate(0, 0, speed * Time.deltaTime, Space.Self);
+
+	// }
 
 }
 

@@ -7,7 +7,12 @@ public class PlayerShoot : MonoBehaviour
     public int maxammo = 10;
     private int currentammo;
 
-    public TMPro.TextMeshProUGUI text;
+    public TMPro.TextMeshProUGUI ammmoCount;
+    public TMPro.TextMeshProUGUI ammoHeader;
+    public TMPro.TextMeshProUGUI reloadText;
+    public TMPro.TextMeshProUGUI reloadTextIntruction;
+    private float textAlpha;
+
     public GameObject line;
     public GameObject bulletPrefab;
     public GameObject casingPrefab;
@@ -26,6 +31,7 @@ public class PlayerShoot : MonoBehaviour
 
     void Start()
     {
+        reloadText.enabled = false;
         if (barrelLocation == null)
             barrelLocation = transform;
 
@@ -34,6 +40,13 @@ public class PlayerShoot : MonoBehaviour
 
     void Reload() {
         currentammo = maxammo;
+        
+        ammoHeader.enabled = true;
+        ammmoCount.enabled = true;
+        reloadText.enabled = false;
+        reloadTextIntruction.enabled = false;
+        gameObject.transform.Find("Cylinder").gameObject.GetComponent<Renderer>().material.SetColor("Color_35DA217C", Color.green);
+
         source.PlayOneShot(reload);
     }
 
@@ -53,7 +66,26 @@ public class PlayerShoot : MonoBehaviour
             Reload();
         }
 
-        text.text = currentammo.ToString();
+        if (currentammo == 0) {
+            ammoHeader.enabled = false;
+            ammmoCount.enabled = false;
+            reloadText.enabled = true;
+            reloadTextIntruction.enabled = true;
+            animateText();
+        }
+
+        ammmoCount.text = currentammo.ToString();
+    }
+
+
+    void animateText() {
+        gameObject.transform.Find("Cylinder").gameObject.GetComponent<Renderer>().material.SetColor("Color_35DA217C", Color.red);
+
+        float lerp = Mathf.PingPong(Time.time, 1f) / 1f;
+        textAlpha = Mathf.Lerp(0.0f, 1.0f, Mathf.SmoothStep(0.0f, 1.0f, lerp));
+        Color32 textColor =  new Color(255, 255, 255, textAlpha);
+        reloadText.color = textColor;
+        reloadTextIntruction.color = textColor;
     }
 
     public void Shoot() {
@@ -62,7 +94,7 @@ public class PlayerShoot : MonoBehaviour
         // bullet.GetComponent<Rigidbody>().AddForce(barrelLocation.forward * shotPower);
 
         if (currentammo == 0) {
-
+            
             source.PlayOneShot(noammo);
 
         } else {
@@ -71,6 +103,9 @@ public class PlayerShoot : MonoBehaviour
             source.PlayOneShot(fire);
 
             GameObject tempFlash;
+
+            // float playerSpeed = 0;
+
             if (bulletPrefab)
                 Instantiate(bulletPrefab, barrelLocation.position, barrelLocation.rotation).GetComponent<Rigidbody>().AddForce(barrelLocation.forward * shotPower, ForceMode.VelocityChange);
            	tempFlash = Instantiate(muzzleFlashPrefab, barrelLocation.position, barrelLocation.rotation);
@@ -78,25 +113,22 @@ public class PlayerShoot : MonoBehaviour
             RaycastHit hitInfo;
             bool hasHit = Physics.Raycast(barrelLocation.position, barrelLocation.forward, out hitInfo, 100f);
 
-            // AdvancedEnemyController hasEnemy = hitInfo.collider.GetComponent<AdvancedEnemyController>();
-            // if(hasEnemy != null) hasEnemy.Dead(hitInfo.point);
-
             if (hasHit)  {
-            	// Debug.Log(hitInfo.transform.name);
+            	Debug.Log(hitInfo.transform.name);
                 hitInfo.collider.SendMessageUpwards("Dead", hitInfo.point, SendMessageOptions.DontRequireReceiver);
             }
 
             if(line)
             {
                 GameObject liner = Instantiate(line);
-                liner.GetComponent<LineRenderer>().SetPositions(new Vector3[] { barrelLocation.position , barrelLocation.position + barrelLocation.forward * 100 });
+                liner.GetComponent<LineRenderer>().SetPositions(new Vector3[] { barrelLocation.position , barrelLocation.position + barrelLocation.forward + (hitInfo.transform.position - barrelLocation.position) });
 
-                Destroy(liner, 0.2f);
+                Destroy(liner, 0.05f);
             }
 
            // Destroy(tempFlash, 0.5f);
             //  Instantiate(casingPrefab, casingExitLocation.position, casingExitLocation.rotation).GetComponent<Rigidbody>().AddForce(casingExitLocation.right * 100f);
-           CasingRelease();
+           // CasingRelease();
        }
     }
 
