@@ -16,6 +16,8 @@ public class TrackManager2 : MonoBehaviour {
     private List<GameObject> activeTracks;
     private int previousIndex;
 
+    private bool isFirst = true;
+
     private Dictionary<string, int[]> trackPairs;
 
     void Start() {
@@ -24,6 +26,7 @@ public class TrackManager2 : MonoBehaviour {
 
         // Generate first few tracks
         for (int i = 0; i < currNumTracks; i++) {
+            if (i > 0) isFirst = false;
             SpawnTrack();
         }
 
@@ -34,7 +37,7 @@ public class TrackManager2 : MonoBehaviour {
     void Update() {
 
         // If player is at end of track, spawn a new one & pop a track
-        if (playerTransform.position.z - (3*trackLen) >= zSpawn - (currNumTracks * trackLen)) {
+        if (playerTransform.position.z - trackLen >= zSpawn - (currNumTracks * trackLen)) {
             PopTrack(); 
             SpawnTrack();
         }
@@ -49,11 +52,16 @@ public class TrackManager2 : MonoBehaviour {
     public void SpawnTrack() {
 
         GameObject track;
-        
-        track = Instantiate (trackPrefabs[RandomTrack()]) as GameObject;
+
+        if (isFirst) {
+            track = Instantiate (trackPrefabs[0]) as GameObject;
+        } else {
+            track = Instantiate (trackPrefabs[RandomTrack()]) as GameObject;
+        }
 
         zSpawn += gapSize;
         track.transform.position = Vector3.forward * zSpawn;
+
         track.transform.rotation = Quaternion.identity;
 
         track.SetActive(true);

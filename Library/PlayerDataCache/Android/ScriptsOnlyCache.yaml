@@ -10,6 +10,7 @@ ScriptsOnlyBuild:
     - Gun
     - GunNew
     - HandController
+    - JumpPad
     - NewEnemyObject
     - PlayerController
     - PlayerShoot
@@ -311,6 +312,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 16962}
     - Class: 114
       Script: {instanceID: 191130}
+    - Class: 114
+      Script: {instanceID: 1525250}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -904,7 +907,7 @@ ScriptsOnlyBuild:
     className: DebugUIHandlerGroup
   - hash:
       serializedVersion: 2
-      Hash: 88cdfb2acdfe59c166a959282a616ea0
+      Hash: 8d6f9b2279574b777d078f28d9db77a8
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: AdvancedEnemyController
@@ -1700,6 +1703,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: bulletCollision
+  - hash:
+      serializedVersion: 2
+      Hash: b3c7b76445e5cc072e6736a1f68299d4
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: JumpPad
   platform: 13
   scenePathNames:
   - Assets/Scenes/GameScene.unity

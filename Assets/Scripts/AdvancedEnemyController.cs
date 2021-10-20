@@ -13,6 +13,11 @@ public class AdvancedEnemyController : MonoBehaviour
     public LayerMask whatIsGround, whatIsPlayer;
     public float health;
 
+    // Patroling
+    public Vector3 walkPoint;
+    public float walkPointRange;
+    bool walkPointSet;
+
     public bool isDead = false;
 
     public float sightRange, attackRange;
@@ -48,6 +53,8 @@ public class AdvancedEnemyController : MonoBehaviour
 	    playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
+        // if (playerInSightRange && !playerInAttackRange) ChasePlayer();
+
         if (playerInSightRange) {
 			// transform.forward = GetTarget().normalized;
 	        lookAtPlayer();
@@ -56,7 +63,35 @@ public class AdvancedEnemyController : MonoBehaviour
                 Shoot();
 	        }
         }
+
+        // if (!playerInSightRange && !playerInAttackRange) Patroling();
+
     }
+
+    // private void Patroling() {
+    //     if (!walkPointSet) SearchWalkPoint();
+
+    //     if (walkPointSet)
+    //         enemy.SetDestination(walkPoint);
+
+    //     Vector3 distanceToWalkPoint = transform.position - walkPoint;
+
+    //     //Walkpoint reached
+    //     if (distanceToWalkPoint.magnitude < 1f)
+    //         walkPointSet = false;
+    // }
+
+    // private void SearchWalkPoint() {
+
+    //     //Calculate random point in range
+    //     float randomZ = Random.Range(-walkPointRange, walkPointRange);
+    //     float randomX = Random.Range(-walkPointRange, walkPointRange);
+
+    //     walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
+
+    //     if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
+    //         walkPointSet = true;
+    // }
 
     void lookAtPlayer() {
 	    transform.forward = Vector3.ProjectOnPlane((Camera.main.transform.position - transform.position), Vector3.up).normalized;
