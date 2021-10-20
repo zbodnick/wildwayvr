@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GunNew : MonoBehaviour
 {
-    public int maxammo = 1;
+    public int maxammo = 3;
     private int currentammo;
 
     public GameObject bulletPrefab;
@@ -43,7 +43,9 @@ public class GunNew : MonoBehaviour
 
     public void Shoot() {
 
-        if (currentammo != 0) {
+        if (currentammo == 0) {
+            // source.PlayOneShot(noammo);
+        } else {
             currentammo--;
             GetComponent<Animator>().SetTrigger("Fire");
     
@@ -57,18 +59,15 @@ public class GunNew : MonoBehaviour
             RaycastHit hitInfo;
             bool hasHit = Physics.Raycast(barrelLocation.position, barrelLocation.forward, out hitInfo, 100);
 
-            if (hasHit)
+            if (hasHit) {
                 hitInfo.collider.SendMessageUpwards("Damage", hitInfo.point, SendMessageOptions.DontRequireReceiver);
+            }
 
             Destroy(tempFlash, 0.5f);
             // Instantiate(casingPrefab, casingExitLocation.position, casingExitLocation.rotation).GetComponent<Rigidbody>().AddForce(casingExitLocation.right * 100f);
             CasingRelease();
-
-        } else {
-           source.PlayOneShot(noammo);
-           // Show reload notification message
+            // Destroy(bulletPrefab, 10f);
         }
-       
     }
 
     void CasingRelease() {
@@ -76,6 +75,7 @@ public class GunNew : MonoBehaviour
         casing = Instantiate(casingPrefab, casingExitLocation.position, casingExitLocation.rotation) as GameObject;
         casing.GetComponent<Rigidbody>().AddExplosionForce(550f, (casingExitLocation.position - casingExitLocation.right * 0.3f - casingExitLocation.up * 0.6f), 1f);
         casing.GetComponent<Rigidbody>().AddTorque(new Vector3(0, Random.Range(100f, 500f), Random.Range(10f, 1000f)), ForceMode.Impulse);
+        Destroy(casing, 1f);
     }
 
 

@@ -6,6 +6,7 @@ using UnityEngine;
 public class AdvancedEnemyController : MonoBehaviour
 {
     public GunNew shooter;
+    private CarController carController;
 
     private NavMeshAgent enemy;
     private Transform player;
@@ -17,8 +18,8 @@ public class AdvancedEnemyController : MonoBehaviour
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
 
-    bool canShoot = true;
-    public float shootDelaySeconds;
+    [SerializeField] private float cooldown = 5;
+    private float cooldownTimer;
 
     private void Awake() {
         enemy = GetComponent<NavMeshAgent>();
@@ -27,13 +28,14 @@ public class AdvancedEnemyController : MonoBehaviour
 
     // Start is called before the first frame update
     void Start() {
+        carController = FindObjectOfType<CarController>();
         SetupRagdoll(true);
     }
 
     Vector3 GetTarget() {
     	// Using transform.LookAt(player); does not work
     	// Must predict player location otherwise enemy miss every shot. Geometry!
-        return ((Camera.main.transform.position - shooter.barrelLocation.position) / 3) + new Vector3(0, 0, 2);
+        return ((Camera.main.transform.position - shooter.barrelLocation.position) / 3) + new Vector3(0, 0, carController.speed);
     }
 
     // Update is called once per frame
@@ -47,14 +49,13 @@ public class AdvancedEnemyController : MonoBehaviour
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
         if (playerInSightRange) {
-			transform.forward = GetTarget().normalized;
-	        // lookAtPlayer();
+			// transform.forward = GetTarget().normalized;
+	        lookAtPlayer();
 			
-			if (playerInAttackRange && canShoot) {
-	        	Shoot();
+			if (playerInAttackRange) {
+                Shoot();
 	        }
         }
-        
     }
 
     void lookAtPlayer() {
@@ -89,20 +90,16 @@ public class AdvancedEnemyController : MonoBehaviour
 
     void Shoot() {
 
-	    shooter.barrelLocation.forward = GetTarget().normalized;
-	    shooter.shotPower = GetTarget().magnitude;
-	    shooter.Shoot();
+        cooldownTimer -= Time.deltaTime;
 
-        canShoot = false;
-        StartCoroutine(ShootDelay());
+        if (cooldownTimer > 0) return;
 
+        cooldownTimer = cooldown;
+
+        shooter.barrelLocation.forward = GetTarget().normalized;
+        shooter.shotPower = GetTarget().magnitude;
+        shooter.Shoot();
     }
-
-    // Shoot delay co-routine
-     IEnumerator ShootDelay() {
-     	yield return new WaitForSeconds(shootDelaySeconds);
-     	canShoot = true;
-     }
 
     private void OnDrawGizmosSelected() {
         Gizmos.color = Color.yellow;

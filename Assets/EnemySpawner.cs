@@ -8,7 +8,7 @@ public class EnemySpawner : MonoBehaviour {
     private Transform Player;
     public int NumberOfEnemiesToSpawn = 5;
     public float SpawnDelay = 1f;
-    public List<EnemyObject> EnemyPrefabs = new List<EnemyObject>();
+    public List<NewEnemyObject> EnemyPrefabs = new List<NewEnemyObject>();
     public SpawnMethod EnemySpawnMethod = SpawnMethod.RoundRobin;
 
     private NavMeshTriangulation Triangulation;
