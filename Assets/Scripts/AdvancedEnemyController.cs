@@ -6,7 +6,7 @@ using UnityEngine;
 public class AdvancedEnemyController : MonoBehaviour
 {
     public GunNew shooter;
-    private CarController carController;
+    private PlayerController playerController;
 
     private NavMeshAgent enemy;
     private Transform player;
@@ -28,14 +28,14 @@ public class AdvancedEnemyController : MonoBehaviour
 
     // Start is called before the first frame update
     void Start() {
-        carController = FindObjectOfType<CarController>();
+        playerController = FindObjectOfType<PlayerController>();
         SetupRagdoll(true);
     }
 
     Vector3 GetTarget() {
     	// Using transform.LookAt(player); does not work
     	// Must predict player location otherwise enemy miss every shot. Geometry!
-        return ((Camera.main.transform.position - shooter.barrelLocation.position) / 3) + new Vector3(0, 0, carController.speed);
+        return ((Camera.main.transform.position - shooter.barrelLocation.position) / 3) + new Vector3(0, 0, playerController.speed);
     }
 
     // Update is called once per frame

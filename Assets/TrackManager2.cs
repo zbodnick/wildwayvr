@@ -10,6 +10,8 @@ public class TrackManager2 : MonoBehaviour {
     public int currNumTracks;
     public int numTracks;
 
+    public float gapSize = 30;
+
     public Transform playerTransform;
     private List<GameObject> activeTracks;
     private int previousIndex;
@@ -50,6 +52,7 @@ public class TrackManager2 : MonoBehaviour {
         
         track = Instantiate (trackPrefabs[RandomTrack()]) as GameObject;
 
+        zSpawn += gapSize;
         track.transform.position = Vector3.forward * zSpawn;
         track.transform.rotation = Quaternion.identity;
 
