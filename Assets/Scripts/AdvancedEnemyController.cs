@@ -130,8 +130,8 @@ public class AdvancedEnemyController : MonoBehaviour
 
         cooldownTimer = cooldown;
 
-        shooter.barrelLocation.forward = GetTarget().normalized;
-        shooter.shotPower = GetTarget().magnitude;
+        shooter.barrelLocation.forward = Vector3.ProjectOnPlane((Camera.main.transform.position - transform.position), Vector3.up).normalized;
+        shooter.shotPower = Vector3.ProjectOnPlane((Camera.main.transform.position - transform.position), Vector3.up).magnitude;
         shooter.Shoot();
     }
 

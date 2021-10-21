@@ -12,16 +12,14 @@ public class PlayerController : MonoBehaviour {
 
 	void Start () {
 
-		rb = GetComponent<Rigidbody>();
-		playerTransform = GameObject.Find("XR Rig").transform;
 	}
 
 	void Update() {
 		
-		Vector3 tempVect = new Vector3(0, 0, 1);
-        tempVect = tempVect.normalized * speed * Time.deltaTime;
-        rb.MovePosition(transform.position + tempVect);
-		// transform.position += Time.deltaTime * new Vector3(0, 0, speed);
+	}
+
+	public void Dead() {
+		Time.timeScale = 0;
 	}
 
 }

@@ -23,4 +23,4 @@ Material:
     m_Floats: []
     m_Colors:
     - Color_35DA217C: {r: 1, g: 0, b: 0.039355278, a: 0.23529412}
-    - Color_B32ECF0: {r: 0, g: 0, b: 0, a: 0}
+    - Color_B32ECF0: {r: 1, g: 1, b: 1, a: 0}

@@ -60,7 +60,7 @@ public class GunNew : MonoBehaviour
             bool hasHit = Physics.Raycast(barrelLocation.position, barrelLocation.forward, out hitInfo, 100);
 
             if (hasHit) {
-                hitInfo.collider.SendMessageUpwards("Damage", hitInfo.point, SendMessageOptions.DontRequireReceiver);
+                hitInfo.collider.SendMessageUpwards("Dead", hitInfo.point, SendMessageOptions.DontRequireReceiver);
             }
 
             Destroy(tempFlash, 0.5f);
