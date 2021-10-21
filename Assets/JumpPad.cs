@@ -25,6 +25,7 @@ public class JumpPad : MonoBehaviour {
 	   		movement.y -= gravity * Time.deltaTime;
 	    	GameObject.FindWithTag("Player").GetComponent<CharacterController>().Move(movement * Time.deltaTime);
 	    }
+	    GameObject.FindWithTag("Player").GetComponent<LocomotionController>().disableContinousMove();
 
     }
 

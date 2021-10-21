@@ -12,6 +12,7 @@ ScriptsOnlyBuild:
     - GunNew
     - HandController
     - JumpPad
+    - LocomotionController
     - NewEnemyObject
     - PlayerController
     - PlayerShoot
@@ -318,6 +319,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 16962}
     - Class: 114
       Script: {instanceID: 16970}
+    - Class: 114
+      Script: {instanceID: 230866}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -1727,6 +1730,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ContinousMovement
+  - hash:
+      serializedVersion: 2
+      Hash: 1a98b3782880193d2171d87c2c3ca915
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: LocomotionController
   platform: 13
   scenePathNames:
   - Assets/Scenes/GameScene.unity
