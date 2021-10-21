@@ -66,6 +66,7 @@ ScriptsOnlyBuild:
     - TMPro.TMP_StyleSheet
     - TMPro.TextMeshProUGUI
     Unity.XR.Interaction.Toolkit.dll:
+    - UnityEngine.XR.Interaction.Toolkit.DeviceBasedContinuousMoveProvider
     - UnityEngine.XR.Interaction.Toolkit.DeviceBasedSnapTurnProvider
     - UnityEngine.XR.Interaction.Toolkit.LocomotionSystem
     - UnityEngine.XR.Interaction.Toolkit.TeleportationAnchor
@@ -204,6 +205,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12720}
     - Class: 114
+      Script: {instanceID: 12908}
+    - Class: 114
       Script: {instanceID: 12952}
     - Class: 114
       Script: {instanceID: 12966}
@@ -326,6 +329,8 @@ ScriptsOnlyBuild:
     - Class: 136
       Script: {instanceID: 0}
     - Class: 137
+      Script: {instanceID: 0}
+    - Class: 143
       Script: {instanceID: 0}
     - Class: 144
       Script: {instanceID: 0}
@@ -656,7 +661,7 @@ ScriptsOnlyBuild:
     className: InputActionEditorWindow
   - hash:
       serializedVersion: 2
-      Hash: 12768d143583893fd81224825c76ceab
+      Hash: 7703ca7eaa1b8275da0d6e014b866258
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerShoot
@@ -1716,6 +1721,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 38c369c8f07510d2465bfa78909b3219
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ContinousMovement
   platform: 13
   scenePathNames:
   - Assets/Scenes/GameScene.unity

@@ -13,7 +13,7 @@ public class PlayerShoot : MonoBehaviour
     public TMPro.TextMeshProUGUI reloadTextIntruction;
     private float textAlpha;
 
-    public GameObject line;
+    // public GameObject line;
     public GameObject bulletPrefab;
     public GameObject casingPrefab;
     public GameObject muzzleFlashPrefab;
@@ -110,23 +110,25 @@ public class PlayerShoot : MonoBehaviour
                 Instantiate(bulletPrefab, barrelLocation.position, barrelLocation.rotation).GetComponent<Rigidbody>().AddForce(barrelLocation.forward * shotPower, ForceMode.VelocityChange);
            	tempFlash = Instantiate(muzzleFlashPrefab, barrelLocation.position, barrelLocation.rotation);
 
+            int layerMask = 1 << LayerMask.NameToLayer("Player");
+            layerMask = ~(layerMask);
+
             RaycastHit hitInfo;
-            bool hasHit = Physics.Raycast(barrelLocation.position, barrelLocation.forward, out hitInfo, 100f);
+            bool hasHit = Physics.Raycast(barrelLocation.position, barrelLocation.forward, out hitInfo, 50f, layerMask);
 
             if (hasHit)  {
             	Debug.Log(hitInfo.transform.name);
                 hitInfo.collider.SendMessageUpwards("Dead", hitInfo.point, SendMessageOptions.DontRequireReceiver);
             }
 
-            if(line)
-            {
-                GameObject liner = Instantiate(line);
-                liner.GetComponent<LineRenderer>().SetPositions(new Vector3[] { barrelLocation.position , barrelLocation.position + barrelLocation.forward * 100 });
+            // if(line) {
+            //     GameObject liner = Instantiate(line);
+            //     liner.GetComponent<LineRenderer>().SetPositions(new Vector3[] { barrelLocation.position , barrelLocation.position + barrelLocation.forward * 100 });
 
-                Destroy(liner, 0.05f);
-            }
+            //     Destroy(liner, 0.05f);
+            // }
 
-           // Destroy(tempFlash, 0.5f);
+           Destroy(tempFlash, 0.5f);
             //  Instantiate(casingPrefab, casingExitLocation.position, casingExitLocation.rotation).GetComponent<Rigidbody>().AddForce(casingExitLocation.right * 100f);
            // CasingRelease();
        }

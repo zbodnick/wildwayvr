@@ -24,12 +24,4 @@ public class PlayerController : MonoBehaviour {
 		// transform.position += Time.deltaTime * new Vector3(0, 0, speed);
 	}
 
-	// void FixedUpdate () {
-		
-	// 	playerTransform.Translate(0, 0, speed * Time.deltaTime, Space.Self);
-
-	// }
-
 }
-
-// transform.position += Time.deltaTime * new Vector3(0, 0, 2);

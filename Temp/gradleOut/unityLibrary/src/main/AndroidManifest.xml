@@ -13,7 +13,7 @@
     </activity>
     <meta-data android:name="unity.splash-mode" android:value="0" />
     <meta-data android:name="unity.splash-enable" android:value="True" />
-    <meta-data android:name="unity.build-id" android:value="64613953-5354-446f-a0b4-60bb4ad1221b" />
+    <meta-data android:name="unity.build-id" android:value="c061911c-6545-406f-be21-c57f02a8f2e0" />
     <meta-data android:name="com.samsung.android.vr.application.mode" android:value="vr_only" />
     <meta-data android:name="com.unity.xr.oculus.LowOverheadMode" android:value="false" />
     <meta-data android:name="com.oculus.supportedDevices" android:value="quest|quest2" />
