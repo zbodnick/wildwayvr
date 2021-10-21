@@ -121,7 +121,7 @@ public class PlayerShoot : MonoBehaviour
             if(line)
             {
                 GameObject liner = Instantiate(line);
-                liner.GetComponent<LineRenderer>().SetPositions(new Vector3[] { barrelLocation.position , barrelLocation.position + barrelLocation.forward + (hitInfo.transform.position - barrelLocation.position) });
+                liner.GetComponent<LineRenderer>().SetPositions(new Vector3[] { barrelLocation.position , barrelLocation.position + barrelLocation.forward * 100 });
 
                 Destroy(liner, 0.05f);
             }
