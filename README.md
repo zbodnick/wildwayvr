@@ -1,4 +1,5 @@
 # wildwayvr
 
-## TL;DR
-A VR game with an endless road. Details TBD.
+WildwayVR is a virtual reality game where players must teleport, shoot, and dodge enemies in order to stay alive.
+
+
