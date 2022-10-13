@@ -3,7 +3,16 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Flat
+  - Hill
+  - Cliff
+  - Bullet
+  - PlayerBullet
+  - bullet
+  - Enemy
+  - Down
+  - Up
   layers:
   - Default
   - TransparentFX
@@ -13,10 +22,10 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - Grab
+  - Body
+  - Ground
+  - Player
   - 
   - 
   - 

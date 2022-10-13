@@ -8,9 +8,18 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Template/Scenes/SampleScene.unity
     guid: d1c3109bdb54ad54c8a2b2838528e640
-  - enabled: 1
-    path: Assets/Scenes/MainScene.unity
+  - enabled: 0
+    path: Assets/Prefabs/Scenes/MainScene.unity
     guid: 458d96ee3aee64b3d87ad3b0bdbdfc0c
+  - enabled: 0
+    path: Assets/Prefabs/Scenes/IntroScene.unity
+    guid: aa82287cd7da642e4b1dd886478a4296
+  - enabled: 1
+    path: Assets/Prefabs/Scenes/GameScene.unity
+    guid: af413b963a21d46908d0e7060d393705
+  - enabled: 0
+    path: Assets/Prefabs/Scenes/LocomotionTest.unity
+    guid: fec192a6626f441199c2c5b78171c0a6
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 199bc3115bf1946d9a866fdd67c2af13,
       type: 2}
